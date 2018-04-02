@@ -1,0 +1,87 @@
+
+<div class="container" style="padding:5%;margin:0px;width:100%;background:rgb(107, 186, 167,0.7);">
+    <div class="form-group">
+        <label style="margin-right:20px">Enter name of test:</label>
+        <input type="text" [(ngModel)]="name" class="form-control">
+    </div> 
+    <div class="form-group">
+            <label style="margin-right:20px">Enter Description of test:</label>
+            <input type="text" [(ngModel)]="des" class="form-control">
+    </div>    
+    <div class="form-group">
+        <label style="margin-right:20px">Enter passkey for test:</label>
+        <input type="password" [(ngModel)]="pass" class="form-control">
+    </div>
+    <div class="form-group">
+        <label style="margin-right:20px">Enter number of questions:</label>
+        <input type="number" min="{{x}}" [(ngModel)]="n" class="form-control">
+
+    </div> 
+</div>
+<div class="container" style="width:100%;margin:0px;padding:0px">
+        <div class="jumbotron" *ngFor="let q of questions;let i=index" style="padding:5%;
+        margin:0px;width:100%;background:rgb(107, 186, 167,0.7)">
+            <div style="color:white">
+            <h4>Question No.{{i+1}}:    
+            {{q.question}}</h4>    
+            
+            <h4>option1:{{q.option1}}</h4>    
+            
+            <h4>option2:{{q.option2}}</h4>    
+            
+            <h4>option3:{{q.option3}}</h4>    
+            
+            <h4>option4:{{q.option4}}</h4>    
+            
+            <h4>correct option:option{{q.correct}}</h4>    
+             
+        </div>
+</div>
+</div> 
+
+<div class="container" *ngIf="n>0" style="padding:5%" style="padding:5%;margin:0px;width:100%;background:rgb(251, 161, 0,0.7)">
+    <div class="form-group">
+    <h2>question Remaining: {{n-x}}</h2>
+    
+    </div>
+    <div *ngIf="n-x>0;else other">
+    <div class="form-group">
+        
+        <label style="margin-right:20px">Enter question:</label>
+        <input type="text" [(ngModel)]="question" size="100" class="form-control">
+    </div>
+    <div class="form-group">
+        <label style="margin-right:20px">Enter option1:</label>
+        <input type="text" [(ngModel)]="option[0]" size="100" class="form-control">
+    </div>
+    <div class="form-group">
+        <label style="margin-right:20px">Enter option2:</label>
+        <input type="text" [(ngModel)]="option[1]" size="100" class="form-control">
+    </div>
+    <div class="form-group">
+        <label style="margin-right:20px">Enter option3:</label>
+        <input type="text" [(ngModel)]="option[2]" size="100" class="form-control">
+    </div>
+    <div class="form-group">
+        <label style="margin-right:20px">Enter option4:</label>
+        <input type="text" [(ngModel)]="option[3]" size="100" class="form-control">
+    </div>
+    <div class="form-group">
+        <label style="margin-right:20px">Select correct option:</label>
+        <select [(ngModel)]="correct" class="form-control col-lg-6" class="form-control">
+                <option  value="1">option1</option>
+                <option  value="2">option2</option>
+                <option  value="3">option3</option>  
+                <option  value="3">option4</option>  
+        </select>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info" (click)="addQuestion()" style="width:50%;margin:5%;margin-left:25%">Add Question</button>    
+    </div>
+    </div>
+    <ng-template #other>
+            <button class="btn btn-info" style="width:50%;margin:5%;margin-left:25%" (click)="createTest()">Create Test</button>
+    </ng-template>
+</div>
+
+

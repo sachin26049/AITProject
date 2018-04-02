@@ -1,0 +1,26 @@
+{
+  "name": "aitnode",
+  "version": "1.0.0",
+  "description": "online test app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-jwt": "*",
+    "socket.io": "^2.0.4"
+  },
+  "keywords": [
+    "angular",
+    "node"
+  ],
+  "author": "Sachin Choudhary",
+  "license": "ISC"
+}

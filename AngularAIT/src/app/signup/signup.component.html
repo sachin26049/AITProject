@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="page-header" style="color:white;text-align:center;font-size:40px">SignUp</h2>
+    <form (ngSubmit)="onSignupSubmit()">
+      <div class="form-group">
+          <h3 style="color:white;text-align:center;font-size:30px">Name</h3>
+          <input type="text" [(ngModel)]="name" name="name" class="form-control" style="width:50%;margin-left:25%;">
+      </div>
+      <div class="form-group">
+          <h3 style="color:white;text-align:center;font-size:30px">Email</h3>
+        <input type="text" [(ngModel)]="email" name="email" class="form-control" style="width:50%;margin-left:25%;" >
+      </div>
+      <div class="form-group">
+          <h3 style="color:white;text-align:center;font-size:30px">Password</h3>
+        <input type="password" [(ngModel)]="password" name="password" class="form-control" style="width:50%;margin-left:25%;">
+      </div>
+      <input type="submit" class="btn btn-lg" value="SignUp" style="margin-left:40%;width:20%;background:#FBA100;">
+    </form>
+</div>    

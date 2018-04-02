@@ -1,0 +1,29 @@
+<div class="container" style="width:100%;text-align:center">
+    
+    <input type="text" [(ngModel)]="name" class="form-control" style="width:50%;margin-left:25%;margin-bottom:5px">
+    <button (click)="searchTest()" class="btn btn-lg" style="background:#FBA100;width:30%;">SearchTest</button>
+
+</div>  
+<div class="container" *ngIf="flag==1">
+<div *ngIf="Test[0];else other">
+    <h1 style="color:white;font-size:30px">
+    List of Tests Found:     
+    </h1>
+  <div class="jumbotron" *ngFor="let x of Test;let i=index" style="color:white;background:rgb(251, 161, 0,0.9)">  
+  <h2>{{x.name}}</h2> 
+  
+  <h4>Description:{{x.des}}</h4>
+  <h3>Problem Setter:{{x.setter}}</h3>
+  <h4>Total number of Questions:{{x.questions.length}}</h4>
+  <h4>Enter Passkey:</h4>
+  <input type="text" [(ngModel)]="passkey[i]" class="form-control" style="width:50%;margin-left:25%;margin-bottom:5px">
+  <button (click)="takeTest(i)" class="btn btn-lg" style="background:white;color:black;width:30%;margin-left:35%">TakeTest</button>
+</div>
+</div>
+<ng-template #other>
+    <h1 style="color:white;font-size:50px">
+        not found 
+    </h1>
+</ng-template>
+
+</div>
