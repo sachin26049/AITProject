@@ -85,12 +85,13 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 router.get('/getResult', (req, res, next) => {
   
   var email= req.query.email;
-   
-  Test.getResults(email, (err, results) => {
+   console.log(email);
+  User.getResults(email, (err, results) => {
     if(err){
       res.json({success: false, msg:'no test found'});
     } else {
-      res.json({success: true, results:results.results});
+      console.log(results);
+      res.json({success: true, results:results[0].Results});
     }
   });
 });

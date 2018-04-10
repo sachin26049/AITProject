@@ -46,4 +46,10 @@ loggedIn() {
     this.user = null;
     localStorage.clear();
   }
+
+  getResults()
+  {
+    console.log(this.getUser());
+    return this.http.get('http://localhost:3000/users/getResult?email='+JSON.parse(this.getUser()).email);
+  }
 }

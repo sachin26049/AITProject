@@ -24,9 +24,21 @@ export class HomePageComponent implements OnInit {
       console.log(this.Test);
     });
 
-    console.log(this.AS.getUser());
-    this.User=JSON.parse(this.AS.getUser()).results;
-    console.log(this.User);
+    // console.log(this.AS.getUser());
+    // this.User=JSON.parse(this.AS.getUser()).results;
+    // console.log(this.User);
+
+    this.AS.getResults().subscribe(data=>{
+        if(data['success']==true)
+        {
+          this.User=data['results'];
+          console.log(this.User);
+        }
+        else
+        {
+          console.log('failed');
+        }
+      });
   }
 gotoTest()
 {

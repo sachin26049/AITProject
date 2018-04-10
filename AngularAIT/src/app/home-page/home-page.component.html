@@ -29,7 +29,7 @@ margin-bottom:50px;padding-bottom:10%;color:white">
             <button style="color:black" (click)="showResults(i)">Show Results..</button>
          </div>   
         </div>
-        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" *ngIf="User">
                 <h2>
                         Test Taken By You:    
                         </h2>   
@@ -40,7 +40,7 @@ margin-bottom:50px;padding-bottom:10%;color:white">
                            <h4>Description:{{x.des}}</h4>
                            <h4>Total Correct Answers:{{x.totalCorrect}} Out of {{x.totalQuestions}}
                            </h4>
-                           <button style="color:black">Show Results..</button>
+                          
                         </div>      
         </div>            
     </div>
