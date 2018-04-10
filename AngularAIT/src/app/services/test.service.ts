@@ -24,5 +24,18 @@ export class TestService {
   {
     return this.test;
   }
+  sendResult(result:any)
+  {
+    return this.http.post('http://localhost:3000/test/addResult',result);
+    
+  }
+  sendResultToUser(result:any)
+  {
+    return this.http.post('http://localhost:3000/users/addResult',result);
+  }
 
+  loadTest(email:any)
+  {
+    return this.http.get('http://localhost:3000/test/searchBySetter?email='+email);
+  }
 }

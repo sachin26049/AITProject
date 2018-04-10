@@ -1,3 +1,20 @@
-<p>
-  view-result works!
-</p>
+<div  style="background:rgb(251, 161, 0,1);color:white;padding:10px;margin:5px" >
+    <h1>
+     TestName:{{Results.name}}   
+    </h1>
+    <h2>Description:{{Results.des}}</h2>
+    <h2>The number of students taken the test:{{Results.Results.length}}
+    </h2>
+    <h2>Total No of questions:{{Results.questions.length}}</h2>
+    <h2>Results:</h2>
+    <div class="row">
+     <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">Name</div>
+     <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">Email</div>
+     <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">Total Correct Answers</div> 
+    </div>
+    <div class="row" *ngFor="let x of Rs">
+        <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">{{x.name}}</div>
+        <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">{{x.email}}</div>
+        <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">{{x.totalCorrect}}</div> 
+       </div>
+ </div>

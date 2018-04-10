@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TestService} from '../services/test.service'
-import {AuthService} from '../services/auth.service'
+import {TestService} from '../services/test.service';
+import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
 @Component({
   selector: 'app-add-test',
@@ -58,6 +58,7 @@ export class AddTestComponent implements OnInit {
       "passkey":this.pass,
       "des":this.des,
       "setter":JSON.parse(this.AS.getUser()).name,
+      "setterEmail":JSON.parse(this.AS.getUser()).email,
       "questions":this.questions
     }
     console.log(test);

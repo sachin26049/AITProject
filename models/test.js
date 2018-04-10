@@ -23,6 +23,10 @@ const TestSchema = mongoose.Schema({
       type: String,
       required: true
     },
+    setterEmail: {
+      type: String,
+      required: true
+    },
     questions: [{
     question:{
       type: String,
@@ -49,6 +53,20 @@ const TestSchema = mongoose.Schema({
       required: true 
     }  
     }],
+    Results:[{
+      name:{
+        type:String,
+        required:true
+      },
+      email:{
+        type:String,
+        required:true
+      },
+      totalCorrect:{
+        type:String,
+        required:true
+      }
+    }]
   },{ collection : 'test' });
 
 const Test = module.exports = mongoose.model('Test', TestSchema);
@@ -64,9 +82,30 @@ module.exports.getTestByName = function(name, callback){
   //console.log(callback);
 }
 
+module.exports.getTestBySetter = function(email, callback){
+  const query = {setterEmail:email};
+  //console.log(query);
+  Test.find(query, callback);
+  //console.log(callback);
+}
+
 module.exports.addTest = function(newTest, callback){
 
       newTest.save(callback);
+}
+
+module.exports.addResults = function(id,newResult, callback){
+  const query = {_id:id};
+  //console.log(query);
+  Test.find(query, function(err,test){
+    console.log(test);
+    console.log("result:"+newResult);
+    test[0].Results.push(newResult);
+    console.log(test[0]);
+    test[0].save(callback);
+    //callback=test[0];
+  });
+  
 }
 
 module.exports.Load =function(callback)

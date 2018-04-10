@@ -21,6 +21,7 @@ import { SignupComponent } from './signup/signup.component'
 import {TestService} from './services/test.service';
 import {AuthService} from './services/auth.service';
 import {ValidateService} from './services/validate.service';
+import {ResultService} from './services/result.service';
 import { TestComponent } from './test/test.component';
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
   {path: 'TakeTest' , component: TakeTestComponent,canActivate: [AuthGuard]},
   {path: 'signup' , component: SignupComponent},
   {path: 'login' , component: LoginComponent},
-  {path: 'test' , component: TestComponent}
+  {path: 'test' , component: TestComponent},
+  {path: 'Results' , component: ViewResultComponent}
   
 ];
 @NgModule({
@@ -53,7 +55,7 @@ const appRoutes: Routes = [
     FlashMessagesModule.forRoot(),
     MatRadioModule
   ],
-  providers: [TestService,AuthService,ValidateService,AuthGuard],
+  providers: [TestService,AuthService,ValidateService,AuthGuard,ResultService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

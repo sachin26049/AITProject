@@ -22,6 +22,25 @@ router.post('/register', (req, res, next) => {
   });
 });
 
+router.post('/addResult', (req, res, next) => {
+  let  newResult= {
+    testName: req.body.testname,
+    des:req.body.des,
+    totalCorrect:req.body.total,
+    totalQuestions:req.body.totalQuestions
+    
+  };
+  var email=req.body.email;
+
+  User.addResults(email,newResult, (err, test) => {
+    if(err){
+      res.json({success: false, msg:'Failed to Test'});
+    } else {
+      res.json({success: true, msg:'Test added'});
+    }
+  });
+});
+
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
   const username = req.body.email;
@@ -47,7 +66,8 @@ router.post('/authenticate', (req, res, next) => {
             id: user._id,
             name: user.name,
             username: user.username,
-            email: user.email
+            email: user.email,
+            results:user.Results
           }
         });
       } else {
@@ -60,6 +80,19 @@ router.post('/authenticate', (req, res, next) => {
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});
+});
+
+router.get('/getResult', (req, res, next) => {
+  
+  var email= req.query.email;
+   
+  Test.getResults(email, (err, results) => {
+    if(err){
+      res.json({success: false, msg:'no test found'});
+    } else {
+      res.json({success: true, results:results.results});
+    }
+  });
 });
 
 module.exports = router;

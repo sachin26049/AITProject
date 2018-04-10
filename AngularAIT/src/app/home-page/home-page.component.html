@@ -12,3 +12,36 @@
     </h1>
     <button (click)="gotoCreate()" class="btn btn-lg" style="background:#FBA100;width:40%">CreateTest</button>
 </div>  
+<div class="container" style="background-color:rgb(107, 186, 167,0.8);width:100%;margin-top:10px;
+margin-bottom:50px;padding-bottom:10%;color:white">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+         <h2>
+         Test Created By You:    
+         </h2>   
+         <div  style="background:rgb(251, 161, 0,1);color:white;padding:10px;margin:5px" *ngFor="let x of Test;let i=index">
+            <h3>
+             TestName:{{x.name}}   
+            </h3>
+            <h4>Description:{{x.des}}</h4>
+            <h4>The number of students taken the test:{{x.Results.length}}
+            </h4>
+            <button style="color:black" (click)="showResults(i)">Show Results..</button>
+         </div>   
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                <h2>
+                        Test Taken By You:    
+                        </h2>   
+                        <div  style="background:rgb(251, 161, 0,1);color:white;padding:10px;margin:5px" *ngFor="let x of User">
+                           <h3>
+                            TestName:{{x.name}}   
+                           </h3>
+                           <h4>Description:{{x.des}}</h4>
+                           <h4>Total Correct Answers:{{x.totalCorrect}} Out of {{x.totalQuestions}}
+                           </h4>
+                           <button style="color:black">Show Results..</button>
+                        </div>      
+        </div>            
+    </div>
+</div>

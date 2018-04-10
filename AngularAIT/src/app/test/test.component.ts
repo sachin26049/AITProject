@@ -42,5 +42,39 @@ export class TestComponent implements OnInit {
      count++; 
     }
     this.CorrectCount=count;
+    var user=JSON.parse(this.AS.getUser());
+    var result={
+      name:user.name,
+      email:user.email,
+      total:this.CorrectCount,
+      testname:this.test.name,
+      des:this.test.des,
+      setter:this.test.setter,
+      id:this.test._id,
+      totalQuestions:this.total
+    }
+    console.log(result);
+    this.TS.sendResult(result).subscribe(data=>{
+     if(data['success']==true)
+     {
+       alert("Done!");
+       this.TS.sendResultToUser(result).subscribe(data=>{
+        if(data['success']==true)
+        {
+          alert("Done!");
+          this.router.navigate(['']);
+        }
+        else
+        {
+          console.log("something went wrong");
+          
+        } 
+       });
+     }
+     else
+     {
+       console.log("something went wrong");
+     } 
+    });
   }
 }
